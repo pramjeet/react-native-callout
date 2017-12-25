@@ -29,5 +29,8 @@
   "homepage": "https://github.com/mayuur/react-native-callout",
   "peerDependencies": {
     "react-native": ">= 0.9.0 || 0.11.0-rc"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0"
   }
 }

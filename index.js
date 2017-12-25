@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,94 +6,98 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   TouchableHighlight,
-  Animated,
-} from 'react-native';
-
+  Animated
+} from "react-native";
+import PropTypes from "prop-types";
 
 class MJCallout extends Component {
-
   constructor(props) {
     super(props);
   }
 
   render() {
-    return (
-      <View>
-      {this.renderCallOutSubviews()}
-      </View>
-    )
+    return <View>{this.renderCallOutSubviews()}</View>;
   }
 
   renderCallOutSubviews() {
-    if(this.props.arrowDirection == 'up') {
+    if (this.props.arrowDirection == "up") {
       return (
-        <Animated.View style={[styles.container, styles.flexDirectionColumn,
-          {
-            opacity: this.props.visibility,
-            width:this.props.width,
-          }
-        ]}>
-          <View style = {styles.calloutTriangle}>
-          </View>
+        <Animated.View
+          style={[
+            styles.container,
+            styles.flexDirectionColumn,
+            {
+              opacity: this.props.visibility,
+              width: this.props.width
+            }
+          ]}
+        >
+          <View style={styles.calloutTriangle} />
 
-          <View style = {styles.calloutSquare}>
-            <Text style={styles.labelHeader}>
-              {this.props.calloutText}
-            </Text>
+          <View style={styles.calloutSquare}>
+            <Text style={styles.labelHeader}>{this.props.calloutText}</Text>
           </View>
         </Animated.View>
       );
-    }
-    else if(this.props.arrowDirection == 'down') {
+    } else if (this.props.arrowDirection == "down") {
       return (
-        <Animated.View style={[styles.container, styles.flexDirectionColumn,
-          {
-            opacity: this.props.visibility,
-            width:this.props.width,
-          }
-        ]}>
-          <View style = {styles.calloutSquare}>
+        <Animated.View
+          style={[
+            styles.container,
+            styles.flexDirectionColumn,
+            {
+              opacity: this.props.visibility,
+              width: this.props.width
+            }
+          ]}
+        >
+          <View style={styles.calloutSquare}>
             <Text style={styles.labelHeader}>{this.props.calloutText}</Text>
           </View>
 
-          <View style = {[styles.calloutTriangle, styles.transformTriangleDown]}>
-          </View>
+          <View
+            style={[styles.calloutTriangle, styles.transformTriangleDown]}
+          />
         </Animated.View>
       );
-    }
-    else if(this.props.arrowDirection == 'right'){
+    } else if (this.props.arrowDirection == "right") {
       return (
-        <Animated.View style={[styles.container,
-          {
-            opacity: this.props.visibility,
-            width:this.props.width,
-          }
-        ]}>
-          <View style = {[styles.calloutTriangle, styles.transformTriangleRight]}>
-          </View>
+        <Animated.View
+          style={[
+            styles.container,
+            {
+              opacity: this.props.visibility,
+              width: this.props.width
+            }
+          ]}
+        >
+          <View
+            style={[styles.calloutTriangle, styles.transformTriangleRight]}
+          />
 
-          <View style = {styles.calloutSquare}>
-            <Text style={styles.labelHeader}>
-              {this.props.calloutText}
-            </Text>
+          <View style={styles.calloutSquare}>
+            <Text style={styles.labelHeader}>{this.props.calloutText}</Text>
           </View>
         </Animated.View>
       );
-    }
-    else {
+    } else {
       return (
-        <Animated.View style={[styles.container,
-          {
-            opacity: this.props.visibility,
-            width:this.props.width,
-          }
-        ]}>
-          <View style = {styles.calloutSquare}>
+        <Animated.View
+          style={[
+            styles.container,
+            {
+              opacity: this.props.visibility,
+              width: this.props.width
+            }
+          ]}
+        >
+          <View style={styles.calloutSquare}>
             <Text style={styles.labelHeader}>{this.props.calloutText}</Text>
           </View>
 
-          <View style = {[styles.calloutTriangle, styles.transformTriangleLeft]}>
-          </View>
+          <View
+            style={[styles.calloutTriangle, styles.transformTriangleLeft]}
+          />
         </Animated.View>
       );
     }
@@ -102,74 +106,70 @@ class MJCallout extends Component {
 
 var styles = StyleSheet.create({
   container: {
-    alignItems: 'flex-start',
-    flexDirection: 'row',
+    alignItems: "flex-start",
+    flexDirection: "row"
   },
 
   flexDirectionColumn: {
-    width:300,
-    marginTop:-18,
-    flexDirection: 'column',
+    width: 300,
+    marginTop: -18,
+    flexDirection: "column"
   },
 
   calloutSquare: {
-    backgroundColor: '#EF4836',
-    flex:1,
-    alignSelf: 'stretch',
-    justifyContent: 'center',
+    backgroundColor: "#EF4836",
+    flex: 1,
+    alignSelf: "stretch",
+    justifyContent: "center",
     borderRadius: 8,
-    height:40,
+    height: 40
   },
 
   calloutTriangle: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     width: 20,
     height: 20,
 
-    alignSelf:'center',
+    alignSelf: "center",
     marginLeft: 20,
 
-    borderStyle: 'solid',
-    borderBottomColor: '#EF4836',
-    borderBottomWidth:15,
+    borderStyle: "solid",
+    borderBottomColor: "#EF4836",
+    borderBottomWidth: 15,
 
-    borderLeftWidth:10,
-    borderLeftColor: 'transparent',
+    borderLeftWidth: 10,
+    borderLeftColor: "transparent",
 
-    borderRightWidth:10,
-    borderRightColor: 'transparent',
+    borderRightWidth: 10,
+    borderRightColor: "transparent"
   },
 
   transformTriangleDown: {
-    transform: [
-      {rotate: '180deg'}
-    ]
+    transform: [{ rotate: "180deg" }]
   },
 
   transformTriangleLeft: {
-    marginLeft:-5,
-    marginRight:-1,
-    alignSelf:'center',
-    transform: [
-      {rotate: '90deg'}
-    ]
+    marginLeft: -5,
+    marginRight: -1,
+    alignSelf: "center",
+    transform: [{ rotate: "90deg" }]
   },
 
   transformTriangleRight: {
-    marginLeft:-5,
-    marginRight:-1,
-    alignSelf:'center',
-    transform: [
-      {rotate: '270deg'}
-    ]
+    marginLeft: -5,
+    marginRight: -1,
+    alignSelf: "center",
+    transform: [{ rotate: "270deg" }]
   },
 
-  labelHeader : {
+  labelHeader: {
     margin: 20,
-    color: 'white',
-    fontWeight: '500',
-  },
-})
+    color: "white",
+    fontWeight: "500"
+  }
+});
 
-MJCallout.propTypes = {arrowDirection: React.PropTypes.oneOf(['up', 'down', 'left', 'right'])};
+MJCallout.propTypes = {
+  arrowDirection: PropTypes.oneOf(["up", "down", "left", "right"])
+};
 module.exports = MJCallout;
